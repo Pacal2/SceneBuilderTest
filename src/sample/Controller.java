@@ -1,11 +1,9 @@
 package sample;
 
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,6 +24,15 @@ public class Controller implements Initializable {
     //ComboBox example
     @FXML private ComboBox comboBox;
     @FXML private Label comboBoxLabel;
+
+    //RadioButton example
+    @FXML private RadioButton javaRadioButton;
+    @FXML private RadioButton phpRadioButton;
+    @FXML private RadioButton cSharpRadioButton;
+    @FXML private RadioButton cPlusPlusRadioButton;
+    @FXML private Label radioButtonLabel;
+    private ToggleGroup favLangToggleGroup;
+
 
     public void choiceBoxButtonPushed() {
         choiceBoxLabel.setText(choiceBox.getValue().toString());
@@ -49,6 +56,23 @@ public class Controller implements Initializable {
         this.comboBoxLabel.setText("Comic selected: \n" + comboBox.getValue().toString());
     }
 
+    public void radioButtonChanged() {
+        String text = "The selected item is: ";
+        if(this.favLangToggleGroup.getSelectedToggle().equals(this.phpRadioButton)) {
+            radioButtonLabel.setText(text + "PHP");
+        }
+        if (this.favLangToggleGroup.getSelectedToggle().equals(this.javaRadioButton)) {
+            radioButtonLabel.setText(text + "Java");
+        }
+        if (this.favLangToggleGroup.getSelectedToggle().equals(this.cPlusPlusRadioButton)) {
+            radioButtonLabel.setText(text + "C++");
+        }
+        if (this.favLangToggleGroup.getSelectedToggle().equals(this.cSharpRadioButton)) {
+            radioButtonLabel.setText(text + "C#");
+        }
+
+    }
+
     @Override
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -56,9 +80,19 @@ public class Controller implements Initializable {
 
         //ChoiceBox
         choiceBoxLabel.setText("");
-        choiceBox.getItems().addAll("apples", "bananas", "oranges", "pears");
+        choiceBox.getItems().addAll("apples", "bananas", "oranges", "pears", "peaches");
 
         //ComboBox
-        comboBox.getItems().addAll("The Maxx", "Dorohedoro", "Incal", "Blame", "Nausicaa");
+        comboBox.getItems().addAll("The Maxx", "Dorohedoro", "Incal", "Blame", "Nausicaa", "Oyasumi Punpun", "Incal");
+        comboBoxLabel.setText("");
+
+        //These items are for configuring the radio buttons
+        radioButtonLabel.setText("");
+        this.favLangToggleGroup = new ToggleGroup();
+        this.phpRadioButton.setToggleGroup(favLangToggleGroup);
+        this.javaRadioButton.setToggleGroup(favLangToggleGroup);
+        this.cPlusPlusRadioButton.setToggleGroup(favLangToggleGroup);
+        this.cSharpRadioButton.setToggleGroup(favLangToggleGroup);
+
     }
 }

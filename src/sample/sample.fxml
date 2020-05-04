@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <HBox>
          <children>
@@ -40,11 +40,25 @@
                <children>
                   <Label text="ComboBox Object">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold Italic" size="18.0" />
                      </font>
                   </Label>
                   <ComboBox fx:id="comboBox" onAction="#comboBoxWasUpdated" prefWidth="150.0" />
                   <Label fx:id="comboBoxLabel" text="Label" />
+               </children>
+            </VBox>
+            <VBox prefHeight="300.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Label text="RadioButton Objects">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+                  <RadioButton fx:id="phpRadioButton" mnemonicParsing="false" onAction="#radioButtonChanged" text="PHP" />
+                  <RadioButton fx:id="javaRadioButton" mnemonicParsing="false" onAction="#radioButtonChanged" text="Java" />
+                  <RadioButton fx:id="cSharpRadioButton" mnemonicParsing="false" onAction="#radioButtonChanged" text="C#" />
+                  <RadioButton fx:id="cPlusPlusRadioButton" mnemonicParsing="false" onAction="#radioButtonChanged" text="C++" />
+                  <Label fx:id="radioButtonLabel" text="Label" />
                </children>
             </VBox>
          </children>
