@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.beans.property.StringProperty;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -32,6 +33,10 @@ public class Controller implements Initializable {
     @FXML private RadioButton cPlusPlusRadioButton;
     @FXML private Label radioButtonLabel;
     private ToggleGroup favLangToggleGroup;
+
+    //ListView example
+    @FXML private ListView listView;
+    @FXML private TextArea gamesTextArea;
 
 
     public void choiceBoxButtonPushed() {
@@ -73,6 +78,18 @@ public class Controller implements Initializable {
 
     }
 
+    public void listViewButtonPushed(){
+        String textAreaString = "";
+
+        ObservableList listOfGames = listView.getSelectionModel().getSelectedItems();
+
+        for (Object item : listOfGames) {
+            textAreaString  += String.format("%s%n", (String) item);
+        }
+
+        this.gamesTextArea.setText(textAreaString);
+    }
+
     @Override
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -86,13 +103,17 @@ public class Controller implements Initializable {
         comboBox.getItems().addAll("The Maxx", "Dorohedoro", "Incal", "Blame", "Nausicaa", "Oyasumi Punpun", "Incal");
         comboBoxLabel.setText("");
 
-        //These items are for configuring the radio buttons
+        //RadioButton
         radioButtonLabel.setText("");
         this.favLangToggleGroup = new ToggleGroup();
         this.phpRadioButton.setToggleGroup(favLangToggleGroup);
         this.javaRadioButton.setToggleGroup(favLangToggleGroup);
         this.cPlusPlusRadioButton.setToggleGroup(favLangToggleGroup);
         this.cSharpRadioButton.setToggleGroup(favLangToggleGroup);
+
+        //ListView
+        listView.getItems().addAll("Planescape: Torment", "Morrowind", "Bloodborne", "Nier: Automata", "Hollow Knight");
+        listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
     }
 }
