@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <HBox>
          <children>
@@ -78,7 +78,7 @@
                   <ListView fx:id="listView" prefHeight="250.0" prefWidth="200.0" />
                </children>
             </VBox>
-            <StackPane prefHeight="253.0" prefWidth="150.0">
+            <StackPane prefHeight="200.0" prefWidth="200.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#listViewButtonPushed" text="SelectedGames -&gt;" />
                </children>
@@ -93,6 +93,11 @@
                   <TextArea fx:id="gamesTextArea" prefHeight="250.0" prefWidth="200.0" />
                </children>
             </VBox>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Button layoutX="117.0" layoutY="214.0" mnemonicParsing="false" onAction="#changeScreenButtonPushed" text="Go to Table View" />
+               </children>
+            </AnchorPane>
          </children>
       </HBox>
    </children>
