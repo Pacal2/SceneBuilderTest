@@ -18,8 +18,8 @@
       <Button layoutX="726.0" layoutY="561.0" mnemonicParsing="false" onAction="#changeScreenButtonPushed" text="Go Back" />
       <TableView fx:id="tableView" layoutX="14.0" layoutY="43.0" prefHeight="200.0" prefWidth="631.0">
         <columns>
-          <TableColumn fx:id="firstNameColumn" prefWidth="160.0" text="First Name" />
-          <TableColumn fx:id="lastNameColumn" prefWidth="149.0" text="Last Name" />
+          <TableColumn fx:id="firstNameColumn" onEditCommit="#editFirstNameCellEvent" prefWidth="160.0" text="First Name" />
+          <TableColumn fx:id="lastNameColumn" onEditCommit="#editLastNameCellEvent" prefWidth="149.0" text="Last Name" />
             <TableColumn fx:id="birthdayColumn" prefWidth="145.0" text="Date" />
         </columns>
       </TableView>

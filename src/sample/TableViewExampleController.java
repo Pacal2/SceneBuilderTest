@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -29,6 +30,17 @@ public class TableViewExampleController implements Initializable {
     @FXML private TableColumn<Person, String> lastNameColumn;
     @FXML private TableColumn<Person, LocalDate> birthdayColumn;
 
+    public void editFirstNameCellEvent(TableColumn.CellEditEvent editedCell) {
+        Person personSelected = tableView.getSelectionModel().getSelectedItem();
+        personSelected.setFirstName(editedCell.getNewValue().toString());
+
+    }
+
+    public void editLastNameCellEvent(TableColumn.CellEditEvent editedCell) {
+        Person personSelected = tableView.getSelectionModel().getSelectedItem();
+        personSelected.setLastName(editedCell.getNewValue().toString());
+
+    }
 
     public void changeScreenButtonPushed(ActionEvent event) throws IOException {
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
@@ -52,6 +64,11 @@ public class TableViewExampleController implements Initializable {
 
         // Data loading
         tableView.setItems(getPeople());
+
+        // Editable tables
+        tableView.setEditable(true);
+        firstNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        lastNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
 
 
     }
