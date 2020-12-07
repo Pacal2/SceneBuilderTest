@@ -39,11 +39,16 @@ public class Controller implements Initializable {
     @FXML private RadioButton cSharpRadioButton;
     @FXML private RadioButton cPlusPlusRadioButton;
     @FXML private Label radioButtonLabel;
-    private ToggleGroup favLangToggleGroup;
+    @FXML private ToggleGroup favLangToggleGroup;
 
     //ListView example
     @FXML private ListView listView;
     @FXML private TextArea gamesTextArea;
+
+    //Spinner example
+    @FXML private Spinner gradeSpinner;
+    @FXML private Button getGradesButton;
+    @FXML private Label gradeLabel;
 
     //Scene Changer
     public void changeScreenButtonPushed(ActionEvent event) throws IOException {
@@ -108,6 +113,14 @@ public class Controller implements Initializable {
         this.gamesTextArea.setText(textAreaString);
     }
 
+    //Method for reading the grade and updating the label when pushed
+
+    public void getGetGradesButtonPushed() {
+        this.gradeLabel.setVisible(true);
+        this.gradeLabel.setText(this.gradeSpinner.getValue().toString());
+
+    }
+
     @Override
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -132,6 +145,13 @@ public class Controller implements Initializable {
         //ListView
         listView.getItems().addAll("Planescape: Torment", "Morrowind", "Bloodborne", "Nier: Automata", "Hollow Knight");
         listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+        //Spinner
+        SpinnerValueFactory<Integer> gradeValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 75);
+        this.gradeSpinner.setValueFactory(gradeValueFactory);
+        gradeSpinner.setEditable(true);
+        this.gradeLabel.setVisible(false);
+        this.gradeLabel.setVisible(false);
 
     }
 }
